@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+  echo "Usage: <version>"
+  exit 1
+fi
+
+sed --in-place "s/DEVELOPMENT DRAFT/Version $1/" LICENSE
+git add .
+git commit -m "Version $1"
+git tag "$1"
